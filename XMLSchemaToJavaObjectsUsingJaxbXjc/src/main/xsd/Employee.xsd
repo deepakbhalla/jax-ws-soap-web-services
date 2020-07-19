@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.deepakbhalla.com/employee/data"
+    xmlns:empns="http://www.deepakbhalla.com/employee/data"
+    elementFormDefault="qualified">
+ 
+    <element name="empRequest" type="empns:EmpRequest"></element>
+    <element name="empResponse" type="empns:EmpResponse"></element>
+ 
+    <complexType name="EmpRequest">
+        <sequence>
+            <element name="id" type="int" minOccurs="0" maxOccurs="1" />
+            <element name="name" type="string" minOccurs="0" maxOccurs="1" />
+        </sequence>
+    </complexType>
+     
+    <complexType name="EmpResponse">
+        <sequence>
+            <element name="id" type="int" minOccurs="1" maxOccurs="1" />
+            <element name="name" type="string" minOccurs="1" maxOccurs="1" />
+            <element name="role" type="string" minOccurs="1" maxOccurs="unbounded" />
+            <element name="gender" type="string" minOccurs="1" maxOccurs="1" />
+            <element name="salary" type="string" minOccurs="1" maxOccurs="1" />
+        </sequence>
+    </complexType>
+ 
+</schema>
