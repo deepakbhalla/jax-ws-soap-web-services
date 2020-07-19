@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="758fcd41-116a-447a-b2d9-0194a6e19bb2" activeEnvironment="Default" name="HelloWorldService" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="f3bc2c01-0462-4534-8ff4-3e47da2a4ba4" wsaVersion="NONE" name="HelloWorldWSServiceSoapBinding" type="wsdl" bindingName="{http://endpoint.soap.ws.demo.example.com/}HelloWorldWSServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/api/hello-world?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/api/hello-world?wsdl"><con:part><con:url>http://localhost:8080/api/hello-world?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="HelloWorldWSService" targetNamespace="http://endpoint.soap.ws.demo.example.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://endpoint.soap.ws.demo.example.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://endpoint.soap.ws.demo.example.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="helloWorld" type="tns:helloWorld"/>
+      <xs:element name="helloWorldResponse" type="tns:helloWorldResponse"/>
+      <xs:complexType name="helloWorld">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="helloWorldResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="helloWorldResponse">
+    <wsdl:part element="tns:helloWorldResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="helloWorld">
+    <wsdl:part element="tns:helloWorld" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="HelloWorldWS">
+    <wsdl:operation name="helloWorld">
+      <wsdl:input message="tns:helloWorld" name="helloWorld"></wsdl:input>
+      <wsdl:output message="tns:helloWorldResponse" name="helloWorldResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HelloWorldWSServiceSoapBinding" type="tns:HelloWorldWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="helloWorld">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="helloWorld">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="helloWorldResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HelloWorldWSService">
+    <wsdl:port binding="tns:HelloWorldWSServiceSoapBinding" name="HelloWorldWSPort">
+      <soap:address location="http://localhost:8080/api/hello-world"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/api/hello-world</con:endpoint></con:endpoints><con:operation id="28a0b0c0-ced8-4f00-8409-d761a3e413a9" isOneWay="false" action="" name="helloWorld" bindingOperationName="helloWorld" type="Request-Response" outputName="helloWorldResponse" inputName="helloWorld" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0688ea11-a520-4a14-895e-c2cef3682d07" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/api/hello-world</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+  xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+  xmlns:end="http://endpoint.soap.ws.demo.example.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <end:helloWorld/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://endpoint.soap.ws.demo.example.com/HelloWorldWS/helloWorld"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
