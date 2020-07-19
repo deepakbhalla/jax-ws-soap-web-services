@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="8e5fe2be-d04f-41ad-bb7f-5b6b740bb391" activeEnvironment="Default" name="Customer_Orders_Service" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="eac62de0-7b17-4b20-82aa-c641e7df6e0c" wsaVersion="NONE" name="CustomerOrdersWsImplServiceSoapBinding" type="wsdl" bindingName="{http://service.soap.ws.example.com/}CustomerOrdersWsImplServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/public/online/ws/customerordersservice?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/public/online/ws/customerordersservice?wsdl"><con:part><con:url>http://localhost:8080/public/online/ws/customerordersservice?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CustomerOrdersWsImplService" targetNamespace="http://service.soap.ws.example.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.soap.ws.example.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://www.deepakbhalla.ws.com">
+  <wsdl:import location="http://localhost:8080/public/online/ws/customerordersservice?wsdl=CustomerOrdersPortType.wsdl" namespace="http://www.deepakbhalla.ws.com"></wsdl:import>
+  <wsdl:binding name="CustomerOrdersWsImplServiceSoapBinding" type="ns1:CustomerOrdersPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createOrders">
+      <soap:operation soapAction="http://www.deepakbhalla.ws.com/createOrders" style="document"/>
+      <wsdl:input name="createOrders">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createOrdersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrders">
+      <soap:operation soapAction="http://www.deepakbhalla.ws.com/getOrders" style="document"/>
+      <wsdl:input name="getOrders">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOrdersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerOrdersWsImplService">
+    <wsdl:port binding="tns:CustomerOrdersWsImplServiceSoapBinding" name="CustomerOrdersWsImplPort">
+      <soap:address location="http://localhost:8080/public/online/ws/customerordersservice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/public/online/ws/customerordersservice?wsdl=CustomerOrdersPortType.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CustomerOrdersPortType" targetNamespace="http://www.deepakbhalla.ws.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://www.deepakbhalla.ws.com">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://www.deepakbhalla.ws.com" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.deepakbhalla.ws.com">
+      <xs:element name="createOrdersRequest" type="tns:createOrdersRequest"/>
+      <xs:element name="createOrdersResponse" type="tns:createOrdersResponse"/>
+      <xs:element name="getOrdersRequest" type="tns:getOrdersRequest"/>
+      <xs:element name="getOrdersResponse" type="tns:getOrdersResponse"/>
+      <xs:complexType name="createOrdersRequest">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:integer"/>
+          <xs:element name="order" type="tns:order"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="order">
+        <xs:sequence>
+          <xs:element name="id" type="xs:integer"/>
+          <xs:element maxOccurs="unbounded" name="product" type="tns:product"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="product">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="quantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createOrdersResponse">
+        <xs:sequence>
+          <xs:element name="result" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getOrdersRequest">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getOrdersResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="order" nillable="true" type="tns:order"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="createOrders">
+    <wsdl:part element="ns1:createOrdersRequest" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createOrdersResponse">
+    <wsdl:part element="ns1:createOrdersResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOrdersResponse">
+    <wsdl:part element="ns1:getOrdersResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOrders">
+    <wsdl:part element="ns1:getOrdersRequest" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CustomerOrdersPortType">
+    <wsdl:operation name="createOrders">
+      <wsdl:input message="ns1:createOrders" name="createOrders"></wsdl:input>
+      <wsdl:output message="ns1:createOrdersResponse" name="createOrdersResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrders">
+      <wsdl:input message="ns1:getOrders" name="getOrders"></wsdl:input>
+      <wsdl:output message="ns1:getOrdersResponse" name="getOrdersResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/public/online/ws/customerordersservice</con:endpoint></con:endpoints><con:operation id="45c787d2-2544-4eae-ad2b-480024816377" isOneWay="false" action="http://www.deepakbhalla.ws.com/createOrders" name="createOrders" bindingOperationName="createOrders" type="Request-Response" outputName="createOrdersResponse" inputName="createOrders" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5b26a18a-cc1c-45f7-9aaf-e929f13b9423" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/public/online/ws/customerordersservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:deep="http://www.deepakbhalla.ws.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <deep:createOrdersRequest>\r
+         <customerId>1</customerId>\r
+         <order>\r
+            <id>2</id>\r
+            <!--1 or more repetitions:-->\r
+            <product>\r
+               <id>2</id>\r
+               <description>Product B description</description>\r
+               <quantity>5</quantity>\r
+            </product>\r
+         </order>\r
+      </deep:createOrdersRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.deepakbhalla.ws.com/createOrders"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="469995d5-1787-4722-a35b-6e41b91d4760" isOneWay="false" action="http://www.deepakbhalla.ws.com/getOrders" name="getOrders" bindingOperationName="getOrders" type="Request-Response" outputName="getOrdersResponse" inputName="getOrders" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="be88d380-c3d4-4af6-89e8-6ec4b67022a4" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/public/online/ws/customerordersservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:deep="http://www.deepakbhalla.ws.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <deep:getOrdersRequest>\r
+         <customerId>1</customerId>\r
+      </deep:getOrdersRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.deepakbhalla.ws.com/getOrders"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
