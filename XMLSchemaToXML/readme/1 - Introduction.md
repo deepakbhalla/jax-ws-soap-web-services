@@ -8,8 +8,10 @@ Introduction
 
 4) You will start by mastering how to come up with a XML document,what well formedness is,then you will move on to learn how to define the contract for XML document . 
 
-5)Because XML is used by multiple parties the provider of webservice, the consumer of webservice,we need to define a contract for the XML we do that using the elements in the XML Schema definition.
+5) Because XML is used by multiple parties the provider of webservice, the consumer of webservice,we need to define a contract for the XML we do that using the elements in the XML
+   Schema definition.
 
-6) Finally you will wrap it up by learning what namespaces are. Namespaces allow us to uniquely qualify a XML element allowing us to use multiple elements with the same name in a XML document.
+6) Finally you will wrap it up by learning what namespaces are. Namespaces allow us to uniquely qualify a XML element allowing us to use multiple elements with the same name in a
+   XML document.
 
 7) So lets get started by looking at what XML is and why is it so powerful.
