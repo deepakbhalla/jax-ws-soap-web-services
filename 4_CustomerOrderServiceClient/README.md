@@ -1,3 +1,5 @@
+This project generates the proxy classes from CustomerOrderServie wsdl.
+
 The wsimport tool is used to parse an existing Web Services Description Language (WSDL) file and 
 generate required files (JAX-WS portable artifacts) for web service client to access the published web services. 
 
