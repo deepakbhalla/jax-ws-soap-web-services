@@ -54,6 +54,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Apache CXF Runtime WS Security -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-ws-security</artifactId>
+			<version>3.3.7</version>
+		</dependency>
 	</dependencies>
 
 	<build>
