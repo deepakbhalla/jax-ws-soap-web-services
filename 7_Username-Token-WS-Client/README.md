@@ -19,3 +19,7 @@
 * Run the client class as a Java application.
 
 * Look for the response status logged in the console output.
+
+For more details on CXF WS Security, please refer:
+
+	http://cxf.apache.org/docs/ws-security.html
