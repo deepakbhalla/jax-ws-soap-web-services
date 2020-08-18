@@ -7,3 +7,5 @@ MTOM is used for encoding binary data in base64Binary and send as binary attache
 MTOM is used for sending large attachments using WSDL based services (SOAP).
 
 You can go through this sample web-service project, in order to learn how to use MTOM inside CXF.
+
+Testing of this service has been done using SoapUI client and testing sreenshots are available in directory named 'screenshots' in this project.
