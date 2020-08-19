@@ -21,3 +21,4 @@ These projects make use of
 - 6_WS_With_UsernameTokenAuthentication
 - 7_Username-Token-WS-Client
 - 8_MTOM_WebService_Using_DataHandler
+- 9_MTOM_WebService_Using_JaxWs
