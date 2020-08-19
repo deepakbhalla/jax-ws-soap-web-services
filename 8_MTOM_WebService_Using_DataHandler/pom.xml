@@ -9,7 +9,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example.deepak.soap.mtom</groupId>
-	<artifactId>8_MTOM_WebService</artifactId>
+	<artifactId>8_MTOM_WebService_Using_DataHandler</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>8_MTOM_WebSevice</name>
 	<description>Demo project for MTOM Webservice</description>
