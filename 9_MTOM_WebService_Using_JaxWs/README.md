@@ -9,6 +9,7 @@ encoded as a String using base64 technique. Basically, the base64 encoding techn
 drawback, MTOM is defined as a specification for optimizing the transmission of this kind of data type in SOAP messages, and XOP 
 (XML-binary Optimized Packaging) is the concrete implementation.
 
+<<<<<<< HEAD
 ## Enabling MTOM in JAX-WS
 
 In JAX-WS, it’s easy to enable MTOM for a web service endpoint by using either the @MTOM or @BindingType annotations. 
@@ -41,3 +42,19 @@ endpoint (port), or by calling the SOAPBinding.setMTOMEnabled(true) method on th
 	SERVER | DOWNLOAD | Sending file: c:/Temp/Test/Server/Download/lion_image.jpg
 
 	
+=======
+  Client
+
+	CLIENT | UPLOAD | File Path: C:\Temp\Test\Client\Upload\sparrow_image.jpg
+	
+	CLIENT | UPLOAD | File Name: sparrow_image.jpg
+	
+	CLIENT | DOWNLOAD | File downloaded: C:\Temp\Test\Client\Download\lion_image.jpg
+
+  Server
+
+	SERVER | UPLOAD | Received file: c:/Temp/Test/Server/Upload/sparrow_image.jpg
+	
+	SERVER | DOWNLOAD | Sending file: c:/Temp/Test/Server/Download/lion_image.jpg
+	
+>>>>>>> 79b9acb3766bb3f293a6c92f6d7de10c8d415643
