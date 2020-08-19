@@ -12,6 +12,8 @@ import javax.jws.WebService;
 import javax.xml.ws.WebServiceException;
 import javax.xml.ws.soap.MTOM;
 
+import org.apache.cxf.feature.Features;
+
 /**
  * A web service endpoint implementation that demonstrates the usage of MTOM
  * (Message Transmission Optimization Mechanism).
