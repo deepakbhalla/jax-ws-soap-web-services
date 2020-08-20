@@ -1,4 +1,4 @@
-package com.example.deepak.soap._WebService_JaxWsSoapHandler;
+package com.example.deepak.soap.ws;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
