@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.bharath.ws.soap</groupId>
-	<artifactId>javafirstws</artifactId>
+	<artifactId>5_Java_First_WS</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
