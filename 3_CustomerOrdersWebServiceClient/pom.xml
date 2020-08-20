@@ -9,7 +9,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example.ws.soap</groupId>
-	<artifactId>CustomerOrdersWebServiceClient</artifactId>
+	<artifactId>3_CustomerOrdersWebServiceClient</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CustomerOrdersWebServiceClient</name>
 	<description>Java Web service client for Customer Orders service created in 2_Wsdl_First_WS project</description>
