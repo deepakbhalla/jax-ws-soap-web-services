@@ -27,3 +27,71 @@ Sometimes we write the JAX-WS handlers and configure them only on the provider s
 To summarize, JAX-WS handlers give you a custom way to manipulate the soap message or to address cross-cutting concerns like security caching which your application needs or the various endpoints in our application needs.
 
 Some examples for JAX-WS handlers are to handle custom authentication, Caching, Versioning and so on. Anything that has to do with the SOAP message can be done using the Händler framework.
+
+## Web Service Output Logs
+
+	2020-08-21 12:16:30.136  INFO 15192 --- [nio-8080-exec-1] o.a.c.s.P.P.PostCodeFinder               : Inbound Message
+	----------------------------
+	ID: 1
+	Address: http://localhost:8080/api/paf/v1/postcodefinder
+	Encoding: UTF-8
+	Http-Method: POST
+	Content-Type: text/xml;charset=UTF-8
+	Headers: {accept-encoding=[gzip,deflate], connection=[Keep-Alive], Content-Length=[557], content-type=[text/xml;charset=UTF-8], host=[localhost:8080], SOAPAction=[""], user-agent=[Apache-HttpClient/4.1.1 (java 1.5)]}
+	Payload: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.ws.soap.deepak.example.com/">
+	   <soapenv:Header>
+	   	<SiteName>United Kingdom</SiteName>
+	   </soapenv:Header>
+	   <soapenv:Body>
+	      <ser:getPostalAddress>
+	         <!--Optional:-->
+	         <pafRequest>
+	            <!--Optional:-->
+	            <postcode>CR0 3RL</postcode>
+	            <!--Optional:-->
+	            <country>United Kingdom</country>
+	         </pafRequest>
+	      </ser:getPostalAddress>
+	   </soapenv:Body>
+	</soapenv:Envelope>
+	--------------------------------------
+	Inside getHeaders()
+	2020-08-21 12:16:30.506 ERROR 15192 --- [nio-8080-exec-1] c.s.x.internal.messaging.saaj.soap.impl  : SAAJ0131: HeaderElements must be namespace qualified
+	Inside handleMessage()
+	Site Name : United Kingdom
+	Inside getHeaders()
+	Inside handleMessage()
+	Response on the way
+	Inside close()
+	2020-08-21 12:16:30.734  INFO 15192 --- [nio-8080-exec-1] o.a.c.s.P.P.PostCodeFinder               : Outbound Message
+	---------------------------
+	ID: 1
+	Response-Code: 200
+	Encoding: UTF-8
+	Content-Type: text/xml
+	Headers: {}
+	Payload: 
+	<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+		<soap:Body>
+			<ns2:getPostalAddressResponse xmlns:ns2="http://service.ws.soap.deepak.example.com/">
+				<response>
+					<postalAddress>
+						16-15 Fatory Lane Croydon, London
+					</postalAddress>
+					<result>true</result>
+				</response>
+			</ns2:getPostalAddressResponse>
+		</soap:Body>
+	</soap:Envelope>
+	--------------------------------------
+
+We can see the flow of the handle messages as below -
+
+* On Request -
+	 getHeaders() - Reads the headers from soap message
+	 handleMessage() - Reads the Header messges from getHeaders() 
+
+* On Response -
+	getHeaders()
+	handleMessage()
+	close()

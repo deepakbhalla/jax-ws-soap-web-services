@@ -3,16 +3,25 @@ package com.example.deepak.soap.ws.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
+import javax.xml.ws.WebServiceContext;
+
+import org.apache.cxf.feature.Features;
+
 import com.example.deepak.soap.ws.dto.PafRequest;
 import com.example.deepak.soap.ws.dto.PafResponse;
 
+@Features(features = "org.apache.cxf.feature.LoggingFeature")
 public class PostalAddressFinderWsImpl implements PostalAddressFinderWs {
 
-    private static final String UK = "United Kingdom";
-    private static final String INDIA = "India";
+    @Resource
+    private WebServiceContext ctx;
 
-    Map<String, String> postalAddresses_UK = new HashMap<String, String>();
-    Map<String, String> postalAddresses_India = new HashMap<String, String>();
+    private static final String UK = "UNITED_KINGDOM";
+    private static final String INDIA = "INDIA";
+
+    private Map<String, String> postalAddresses_UK = new HashMap<String, String>();
+    private Map<String, String> postalAddresses_India = new HashMap<String, String>();
 
     /**
      * For the demonstration purpose, added only one address against the given
@@ -34,7 +43,13 @@ public class PostalAddressFinderWsImpl implements PostalAddressFinderWs {
 
         PafResponse pafResponse = new PafResponse();
 
-        if (UK.equalsIgnoreCase(pafRequest.getCountry())) {
+        // Retrieve the SITE_NAME set by SOAP Handler in the SOAPMessageContext in
+        // SiteHandler.java class
+        String siteName = (String) ctx.getMessageContext().get("SITE_NAME");
+
+        System.out.println("SITE_NAME RETRIEVED FROM WebServiceContext: " + siteName);
+
+        if (UK.equalsIgnoreCase(siteName)) {
             pafResponse.setResult(true);
             String postalAddress = postalAddresses_UK.get(pafRequest.getPostcode());
             if (postalAddress != null) {
@@ -43,7 +58,7 @@ public class PostalAddressFinderWsImpl implements PostalAddressFinderWs {
                 pafResponse.setResult(false);
                 pafResponse.setErrorMessage("Post code " + pafRequest.getPostcode() + " not found");
             }
-        } else if (INDIA.equalsIgnoreCase(pafRequest.getCountry())) {
+        } else if (INDIA.equalsIgnoreCase(siteName)) {
             pafResponse.setResult(true);
             String postalAddress = postalAddresses_India.get(pafRequest.getPostcode());
             if (postalAddress != null) {
