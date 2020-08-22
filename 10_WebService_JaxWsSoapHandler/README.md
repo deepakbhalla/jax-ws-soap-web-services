@@ -95,3 +95,21 @@ We can see the flow of the handle messages as below -
 	getHeaders()
 	handleMessage()
 	close()
+
+## Passing soap header values from SOAPHandler to Web-service implementation class
+
+You can read the soap header from the SOAPMessageContext in a SOAPHandler class, then pass the values to your @WebService implementation via attributes in the MessageContext.
+
+Please refer below code in SiteHandler.java class in this project which implements SOAPHandler<SOAPMessageContext> interface -
+
+	// Set SiteName in "SOAPMessageContext" so that it can be access by WebService implementation.
+	context.put("SITE_NAME", eachNode.getValue());
+	context.setScope("SITE_NAME", Scope.APPLICATION);
+	
+	where context is an instance of 'SOAPMessageContext'
+	
+Now look at the below code of Web-service implementation which reads the header values from 'WebServiceContext'
+
+	// Retrieve the SITE_NAME set by SOAP Handler in the SOAPMessageContext in SiteHandler.java class
+	String siteName = (String) ctx.getMessageContext().get("SITE_NAME");
+
